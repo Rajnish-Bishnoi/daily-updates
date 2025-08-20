@@ -1,0 +1,57 @@
+name: Daily Auto Update
+
+on:
+  schedule:
+    - cron: "30 18 * * *"   # Runs daily at 00:00 IST (18:30 UTC)
+  workflow_dispatch:        # Allow manual run from Actions tab
+
+permissions:
+  contents: write           # Allow commits
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate daily content
+        shell: bash
+        run: |
+          QUOTES=("Keep learning, keep growing."
+                  "Code is like humor. When you have to explain it, it’s bad."
+                  "Be better than yesterday."
+                  "First, solve the problem. Then, write the code."
+                  "The best way to predict the future is to create it.")
+          TIPS=("Use meaningful variable names."
+                "Comment only complex logic."
+                "Keep functions small and focused."
+                "Use Git branches for features."
+                "Practice debugging daily.")
+
+          RANDOM_QUOTE=${QUOTES[$RANDOM % ${#QUOTES[@]}]}
+          RANDOM_TIP=${TIPS[$RANDOM % ${#TIPS[@]}]}
+
+          # Date in UTC and IST
+          TS_UTC="$(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+          TS_IST="$(TZ=Asia/Kolkata date +"%Y-%m-%d %H:%M:%S IST")"
+
+          {
+            echo "## 🌞 Daily Update"
+            echo ""
+            echo "**Date (UTC):** $TS_UTC"
+            echo "**Date (IST):** $TS_IST"
+            echo ""
+            echo "💡 *Quote of the day:* $RANDOM_QUOTE"
+            echo ""
+            echo "🛠️ Coding tip: $RANDOM_TIP"
+          } > DAILY.md
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add DAILY.md
+          git commit -m "Daily update: $(TZ=Asia/Kolkata date +"%Y-%m-%d %H:%M:%S IST")" || echo "No changes to commit"
+          git push
