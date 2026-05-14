@@ -1,8 +1,8 @@
 ## 🌞 Daily Update
 
-**Date (UTC):** 2026-05-13 20:15:55 UTC
-**Date (IST):** 2026-05-14 01:45:55 IST
+**Date (UTC):** 2026-05-14 20:12:12 UTC
+**Date (IST):** 2026-05-15 01:42:12 IST
 
-💡 *Quote of the day:* Be better than yesterday.
+💡 *Quote of the day:* Code is like humor. When you have to explain it, it’s bad.
 
-🛠️ Coding tip: Practice debugging daily.
+🛠️ Coding tip: Use Git branches for features.
