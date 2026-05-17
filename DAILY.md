@@ -1,8 +1,8 @@
 ## 🌞 Daily Update
 
-**Date (UTC):** 2026-05-16 19:37:32 UTC
-**Date (IST):** 2026-05-17 01:07:32 IST
+**Date (UTC):** 2026-05-17 19:43:00 UTC
+**Date (IST):** 2026-05-18 01:13:00 IST
 
-💡 *Quote of the day:* Code is like humor. When you have to explain it, it’s bad.
+💡 *Quote of the day:* First, solve the problem. Then, write the code.
 
-🛠️ Coding tip: Keep functions small and focused.
+🛠️ Coding tip: Comment only complex logic.
